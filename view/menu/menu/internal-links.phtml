@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title></title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+        <style>
+            body {
+                padding: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="well">
+            <h3>Menu</h3>
+            <?php echo $this->navigation('Navigation\Main')->menu()->renderMenu(null, array(
+                        'ulId' => 'sitemap',
+                    )); ?>
+        </div>
+        <div class="well">
+            <h3>Standalone</h3>
+            <ul>
+            <?php foreach ($this->standaloneItems as $item) : ?>
+                <li><a href="<?php echo $this->url('content', ['slug' => $item->name]); ?>"><?php echo $this->escapeHtml($item->navText) ?></a></li>
+            <?php endforeach; ?>
+            </ul>
+        </div>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="/js/global.js"></script>
+        <script type="text/javascript" >
+            $(document).ready(function() {
+               $('a').click(function(e) {
+                   e.preventDefault();
+                   var href = $(this).attr('href');
+                   var dialog = window.opener.CKEDITOR.dialog.getCurrent();
+                   dialog.setValueOf('info', 'url', href);
+                   dialog.setValueOf('info', 'protocol', '');
+                   window.close();
+                   return false;
+               });
+            });
+        </script>
+    </body>
+</html>

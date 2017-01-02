@@ -1,0 +1,91 @@
+<?php
+$red = 255-(($this->level-1)*20);
+$green = 255-(($this->level-1)*12);
+?>
+
+<tr id="<?php echo $this->escapeHtmlAttr($this->name) ?>" style="background-color: rgb(<?php echo $red ?>,<?php echo $green ?>,255);">
+<td width="100%" style="padding-left: <?php echo ($this->level-1)*35 ?>px;">
+
+<div class="item-icon">
+<img src="<?php echo $this->escapeHtmlAttr($this->typeIcon) ?>" alt="" title="<?php echo $this->escapeHtmlAttr($this->typeName) ?><?php if ($this->moduleName !== 'item') : ?> <?php echo $this->escapeHtmlAttr($this->moduleName) ?><?php endif; ?>" />
+</div>
+
+<div class="item-title">
+<em><a href="<?php echo $this->url('content', ['slug' => $this->name]); ?>"><?php echo $this->escapeHtml($this->name) ?></a></em>
+</div>
+
+<div class="item-detail">
+Type: <em><?php echo $this->escapeHtml($this->typeName) ?><?php if ($this->moduleName !== 'item') : ?> <?php echo $this->escapeHtmlAttr($this->moduleName) ?><?php endif; ?></em>
+</div>
+
+</td>
+
+<?php if ($this->allowCreate && $this->level < $this->maxMenuLevels) : ?>
+
+<td style="white-space: nowrap;">
+<img src="/images/icons/add_beneath.png" alt="Add beneath icon" />
+<a class="link-button" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => $this->menuItemId]]); ?>">Create new beneath</a>
+</td>
+
+<?php elseif ($this->allowCreate) : ?>
+<td>&nbsp;</td>
+<?php endif; ?>
+
+<?php if (!$this->module && !$this->external) : ?>
+<td>
+    <span class="sprite-icon sprite-lightbulb-<?php echo $this->escapeHtmlAttr($this->lifespanState) ?>" title="<?php echo $this->escapeHtmlAttr($this->lifespanTitle) ?>">Bulb <?php echo $this->escapeHtml($this->lifespanState) ?> icon</span>
+</td>
+<?php else : ?>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<?php endif; ?>
+
+<?php if ($this->allowShuffleMenu) : ?>
+<?php if (!$this->first) : ?>
+<td><a href="<?php echo $this->url('menu', ['action' => 'shuffle', 'id' => $this->menuItemId], ['query' => ['direction' => 'up']]); ?>" title="Shuffle up"><span class="sprite-icon sprite-arrow-up-on">Arrow up icon</span></a></td>
+<?php else : ?>
+<td><span class="sprite-icon sprite-arrow-up-off">Arrow up icon disabled</span></td>
+<?php endif; ?>
+<?php if (!$this->last) : ?>
+<td><a href="<?php echo $this->url('menu', ['action' => 'shuffle', 'id' => $this->menuItemId], ['query' => ['direction' => 'down']]); ?>" title="Shuffle down"><span class="sprite-icon sprite-arrow-down-on">Arrow down icon</span></a></td>
+<?php else : ?>
+<td><span class="sprite-icon sprite-arrow-down-off">Arrow down icon disabled</span></td>
+<?php endif; ?>
+<?php else : ?>
+<td><span class="sprite-icon sprite-arrow-up-off">Arrow up icon disabled</span></td>
+<td><span class="sprite-icon sprite-arrow-down-off">Arrow down icon disabled</span></td>
+<?php endif; ?>
+
+<?php if (!$this->module && !$this->external) : ?>
+
+<?php if ($this->allowEdit) : ?>
+<td><a href="<?php echo $this->url($this->moduleName, ['action' => 'edit', 'id' => $this->id], ['query' => ['from' => 'menu']]); ?>" title="Edit"><span class="sprite-icon sprite-edit-on">Edit icon</span></a></td>
+<?php else : ?>
+<td><span class="sprite-icon sprite-edit-off">Edit icon disabled</span></td>
+<?php endif; ?>
+
+<?php if ($this->allowPublish) : ?>
+<td><a href="<?php echo $this->url($this->moduleName, ['action' => 'publish', 'id' => $this->id], ['query' => ['from' => 'menu']]); ?>" title="Edit publishing"><span class="sprite-icon sprite-globe-on">Globe icon</span></a></td>
+<?php else : ?>
+<td><span class="sprite-icon sprite-globe-off">Globe icon disabled</span></td>
+<?php endif; ?>
+
+<?php if ($this->allowDelete) : ?>
+<?php if ($this->numChildMenuItems) : ?>
+<td><span class="sprite-icon sprite-dustbin-off" title="You can not delete this <?php echo $this->escapeHtmlAttr($this->moduleName) ?> because it has other items below it in the menu">Dustbin disabled icon</span></td>
+<?php else : ?>
+<td><a href="<?php echo $this->url($this->moduleName, ['action' => 'delete', 'id' => $this->id], ['query' => ['from' => 'menu']]); ?>" title="Delete"><span class="sprite-icon sprite-dustbin-on">Dustbin icon</span></a></td>
+<?php endif; ?>
+<?php else : ?>
+<td><span class="sprite-icon sprite-dustbin-off">Dustbin disabled icon</span></td>
+<?php endif; ?>
+
+<?php else : ?>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+<?php endif; ?>
+
+</tr>
