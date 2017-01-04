@@ -6,6 +6,7 @@ use Boxspaced\EntityManager\Mapper\Conditions\Conditions;
 use Zend\Router\Http\Segment;
 use Slug\Model\Route;
 use Core\Model\RepositoryFactory;
+use Zend\Permissions\Acl\Acl;
 
 return [
     'menu' => [
@@ -29,6 +30,30 @@ return [
                 ],
             ],
             // LIFO
+        ],
+    ],
+    'acl' => [
+        'resources' => [
+            [
+                'id' => Controller\MenuController::class,
+            ],
+        ],
+        'rules' => [
+            [
+                'type' => Acl::TYPE_ALLOW,
+                'roles' => 'author',
+                'resources' => Controller\MenuController::class,
+                'privileges' => [
+                    'index',
+                    'internal-links',
+                ],
+            ],
+            [
+                'type' => Acl::TYPE_ALLOW,
+                'roles' => 'publisher',
+                'resources' => Controller\MenuController::class,
+                'privileges' => 'shuffle',
+            ],
         ],
     ],
     'service_manager' => [
