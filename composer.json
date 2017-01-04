@@ -28,5 +28,10 @@
             "type": "vcs",
             "url": "https://github.com/boxspaced/entity-manager"
         }
-    ]
+    ],
+    "extra": {
+        "zf": {
+            "module": "Menu"
+        }
+    }
 }
