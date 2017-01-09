@@ -49,7 +49,7 @@ class MenuItem extends AbstractEntity
      */
     public function getParentMenuItem()
     {
-        return $this->get('parentMenuItem');
+        return $this->get('parent_menu_item');
     }
 
     /**
@@ -58,7 +58,7 @@ class MenuItem extends AbstractEntity
      */
     public function setParentMenuItem(MenuItem $parentMenuItem)
     {
-        $this->set('parentMenuItem', $parentMenuItem);
+        $this->set('parent_menu_item', $parentMenuItem);
 		return $this;
     }
 
@@ -67,7 +67,7 @@ class MenuItem extends AbstractEntity
      */
     public function getOrderBy()
     {
-        return $this->get('orderBy');
+        return $this->get('order_by');
     }
 
     /**
@@ -76,7 +76,7 @@ class MenuItem extends AbstractEntity
      */
     public function setOrderBy($orderBy)
     {
-        $this->set('orderBy', $orderBy);
+        $this->set('order_by', $orderBy);
 		return $this;
     }
 
@@ -103,7 +103,7 @@ class MenuItem extends AbstractEntity
      */
     public function getNavText()
     {
-        return $this->get('navText');
+        return $this->get('nav_text');
     }
 
     /**
@@ -112,7 +112,7 @@ class MenuItem extends AbstractEntity
      */
     public function setNavText($navText)
     {
-        $this->set('navText', $navText);
+        $this->set('nav_text', $navText);
 		return $this;
     }
 

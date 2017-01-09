@@ -2,7 +2,7 @@
 namespace Menu;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManager\Mapper\Conditions\Conditions;
+use Boxspaced\EntityManager\Mapper\Conditions;
 use Zend\Router\Http\Segment;
 use Slug\Model\Route;
 use Core\Model\RepositoryFactory;
@@ -93,14 +93,14 @@ return [
                             'type' => AbstractEntity::TYPE_BOOL,
                         ],
                     ],
-                    'children' => [
+                    'one_to_many' => [
                         'items' => [
                             'type' => Model\MenuItem::class,
                             'conditions' => function ($id) {
                                 return (new Conditions())
-                                        ->field('parentMenuItem')->isNull()
+                                        ->field('parent_menu_item')->isNull()
                                         ->field('menu.id')->eq($id)
-                                        ->order('orderBy', Conditions::ORDER_ASC);
+                                        ->order('order_by', Conditions::ORDER_ASC);
                             },
                         ],
                     ],
@@ -112,7 +112,7 @@ return [
                         'table' => 'menu_item',
                         'columns' => [
                             'menu' => 'menu_id',
-                            'parentMenuItem' => 'parent_menu_item_id',
+                            'parent_menu_item' => 'parent_menu_item_id',
                             'route' => 'route_id',
                         ],
                     ],
@@ -122,10 +122,10 @@ return [
                         'id' => [
                             'type' => AbstractEntity::TYPE_INT,
                         ],
-                        'orderBy' => [
+                        'order_by' => [
                             'type' => AbstractEntity::TYPE_INT,
                         ],
-                        'navText' => [
+                        'nav_text' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
                         'external' => [
@@ -134,20 +134,20 @@ return [
                         'menu' => [
                             'type' => Model\Menu::class,
                         ],
-                        'parentMenuItem' => [
+                        'parent_menu_item' => [
                             'type' => Model\MenuItem::class,
                         ],
                         'route' => [
                             'type' => Route::class,
                         ],
                     ],
-                    'children' => [
+                    'one_to_many' => [
                         'items' => [
                             'type' => Model\MenuItem::class,
                             'conditions' => function ($id) {
                                 return (new Conditions())
-                                        ->field('parentMenuItem.id')->eq($id)
-                                        ->order('orderBy', Conditions::ORDER_ASC);
+                                        ->field('parent_menu_item.id')->eq($id)
+                                        ->order('order_by', Conditions::ORDER_ASC);
                             },
                         ],
                     ],
