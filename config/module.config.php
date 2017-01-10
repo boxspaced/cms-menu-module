@@ -3,6 +3,7 @@ namespace Menu;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
 use Boxspaced\EntityManager\Mapper\Conditions;
+use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
 use Slug\Model\Route;
 use Core\Model\RepositoryFactory;
@@ -96,12 +97,28 @@ return [
                     'one_to_many' => [
                         'items' => [
                             'type' => Model\MenuItem::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('parent_menu_item')->isNull()
-                                        ->field('menu.id')->eq($id)
-                                        ->order('order_by', Conditions::ORDER_ASC);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'parent_menu_item',
+                                            'operation' => 'isNull',
+                                        ],
+                                        [
+                                            'field' => 'menu.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                    'ordering' => [
+                                        [
+                                            'field' => 'order_by',
+                                            'direction' => Conditions::ORDER_ASC,
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -144,11 +161,24 @@ return [
                     'one_to_many' => [
                         'items' => [
                             'type' => Model\MenuItem::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('parent_menu_item.id')->eq($id)
-                                        ->order('order_by', Conditions::ORDER_ASC);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'parent_menu_item.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                    'ordering' => [
+                                        [
+                                            'field' => 'order_by',
+                                            'direction' => Conditions::ORDER_ASC,
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
