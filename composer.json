@@ -8,7 +8,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Menu\\": "src/"
+            "Boxspaced\\CmsMenuModule\\": "src/"
         }
     },
     "config": {
@@ -31,7 +31,7 @@
     ],
     "extra": {
         "zf": {
-            "module": "Menu"
+            "module": "Boxspaced\\CmsMenuModule"
         }
     }
 }

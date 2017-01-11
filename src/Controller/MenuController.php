@@ -1,12 +1,12 @@
 <?php
-namespace Menu\Controller;
+namespace Boxspaced\CmsMenuModule\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Log\Logger;
-use Menu\Service;
-use Account\Service\AccountService;
-use Standalone\Service\StandaloneService;
+use Boxspaced\CmsMenuModule\Service;
+use Boxspaced\CmsAccountModule\Service\AccountService;
+use Boxspaced\CmsStandaloneModule\Service\StandaloneService;
 
 class MenuController extends AbstractActionController
 {

@@ -1,12 +1,12 @@
 <?php
-namespace Menu;
+namespace Boxspaced\CmsMenuModule;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
 use Boxspaced\EntityManager\Mapper\Conditions;
 use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
-use Slug\Model\Route;
-use Core\Model\RepositoryFactory;
+use Boxspaced\CmsSlugModule\Model\Route;
+use Boxspaced\CmsCoreModule\Model\RepositoryFactory;
 use Zend\Permissions\Acl\Acl;
 
 return [

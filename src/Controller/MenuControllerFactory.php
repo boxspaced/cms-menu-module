@@ -1,14 +1,14 @@
 <?php
-namespace Menu\Controller;
+namespace Boxspaced\CmsMenuModule\Controller;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Menu\Controller\MenuController;
-use Standalone\Service\StandaloneService;
-use Menu\Service\MenuService;
-use Account\Service\AccountService;
+use Boxspaced\CmsMenuModule\Controller\MenuController;
+use Boxspaced\CmsStandaloneModule\Service\StandaloneService;
+use Boxspaced\CmsMenuModule\Service\MenuService;
+use Boxspaced\CmsAccountModule\Service\AccountService;
 use Zend\Log\Logger;
-use Core\Controller\AbstractControllerFactory;
+use Boxspaced\CmsCoreModule\Controller\AbstractControllerFactory;
 
 class MenuControllerFactory extends AbstractControllerFactory implements FactoryInterface
 {

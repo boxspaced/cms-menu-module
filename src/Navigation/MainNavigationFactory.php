@@ -1,5 +1,5 @@
 <?php
-namespace Menu\Navigation;
+namespace Boxspaced\CmsMenuModule\Navigation;
 
 class MainNavigationFactory extends AbstractNavigationFactory
 {

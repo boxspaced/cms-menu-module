@@ -1,5 +1,5 @@
 <?php
-namespace Menu\Model;
+namespace Boxspaced\CmsMenuModule\Model;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
 use Boxspaced\EntityManager\Collection\Collection;

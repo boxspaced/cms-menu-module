@@ -1,5 +1,5 @@
 <?php
-namespace Menu\Exception;
+namespace Boxspaced\CmsMenuModule\Exception;
 
 class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {

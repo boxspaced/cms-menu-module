@@ -1,17 +1,17 @@
 <?php
-namespace Menu\Service;
+namespace Boxspaced\CmsMenuModule\Service;
 
 use Zend\Cache\Storage\Adapter\AbstractAdapter as Cache;
 use Zend\Log\Logger;
 use Zend\Authentication\AuthenticationService;
 use Boxspaced\EntityManager\EntityManager;
-use Menu\Model;
+use Boxspaced\CmsMenuModule\Model;
 use Zend\Filter\StaticFilter;
 use Zend\Filter\Word\DashToCamelCase;
 use Boxspaced\EntityManager\Collection\Collection;
-use Menu\Exception;
-use Account\Model\UserRepository;
-use Account\Model\User;
+use Boxspaced\CmsMenuModule\Exception;
+use Boxspaced\CmsAccountModule\Model\UserRepository;
+use Boxspaced\CmsAccountModule\Model\User;
 
 class MenuService
 {

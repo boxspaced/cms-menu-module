@@ -1,5 +1,5 @@
 <?php
-namespace Menu\Service;
+namespace Boxspaced\CmsMenuModule\Service;
 
 class Menu
 {

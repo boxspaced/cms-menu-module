@@ -1,5 +1,5 @@
 <?php
-namespace Menu\Exception;
+namespace Boxspaced\CmsMenuModule\Exception;
 
 class UnexpectedValueException extends \UnexpectedValueException implements ExceptionInterface
 {

@@ -1,13 +1,13 @@
 <?php
-namespace Menu\Service;
+namespace Boxspaced\CmsMenuModule\Service;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\Log\Logger;
 use Zend\Authentication\AuthenticationService;
 use Boxspaced\EntityManager\EntityManager;
-use Menu\Model;
-use Account\Model\UserRepository;
+use Boxspaced\CmsMenuModule\Model;
+use Boxspaced\CmsAccountModule\Model\UserRepository;
 
 class MenuServiceFactory implements FactoryInterface
 {

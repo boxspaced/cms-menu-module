@@ -1,5 +1,5 @@
 <?php
-namespace Menu\Exception;
+namespace Boxspaced\CmsMenuModule\Exception;
 
 interface ExceptionInterface
 {

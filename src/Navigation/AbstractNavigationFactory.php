@@ -1,11 +1,11 @@
 <?php
-namespace Menu\Navigation;
+namespace Boxspaced\CmsMenuModule\Navigation;
 
 use DateTime;
 use Zend\Navigation\Service\AbstractNavigationFactory as ZendAbstractNavigationFactory;
 use Interop\Container\ContainerInterface;
-use Menu\Service\MenuService;
-use Menu\Service\MenuItem;
+use Boxspaced\CmsMenuModule\Service\MenuService;
+use Boxspaced\CmsMenuModule\Service\MenuItem;
 use Zend\Router\Http\RouteMatch;
 use Zend\Filter\StaticFilter;
 use Zend\Filter\Word\DashToCamelCase;

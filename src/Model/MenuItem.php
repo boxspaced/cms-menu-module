@@ -1,9 +1,9 @@
 <?php
-namespace Menu\Model;
+namespace Boxspaced\CmsMenuModule\Model;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
 use Boxspaced\EntityManager\Collection\Collection;
-use Slug\Model\Route;
+use Boxspaced\CmsSlugModule\Model\Route;
 
 class MenuItem extends AbstractEntity
 {
