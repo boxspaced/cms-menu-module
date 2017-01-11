@@ -134,7 +134,7 @@ abstract class AbstractNavigationFactory extends ZendAbstractNavigationFactory
         return str_replace(
             '##',
             StaticFilter::execute($moduleName, DashToCamelCase::class),
-            '##\\Controller\\##Controller'
+            'Boxspaced\\Cms##Module\\Controller\\##Controller'
         );
     }
 

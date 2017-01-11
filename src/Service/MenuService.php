@@ -196,7 +196,11 @@ class MenuService
 
             $entityName = rtrim($module->getName(), 's');
             $entityName = ucfirst(StaticFilter::execute($entityName, DashToCamelCase::class));
-            $entityName = $entityName . '\\Model\\' . $entityName;
+            $entityName = str_replace(
+                '##',
+                $entityName,
+                'Boxspaced\\Cms##Module\\Model\\##'
+            );
 
             return $this->entityManager->find($entityName, $route->getIdentifier());
         }
