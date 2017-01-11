@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                     <?php if ($this->menuItems) : ?>
-                    <?php echo $this->partialLoop('cms-menu-module/menu/menu-item.phtml', $this->menuItems) ?>
+                    <?php echo $this->partialLoop('boxspaced/cms-menu-module/menu/menu-item.phtml', $this->menuItems) ?>
                     <?php else : ?>
                     <tr class="odd"><td width="100%">Empty result set</td><td colspan="10">&nbsp;</td></tr>
                     <?php endif; ?>
