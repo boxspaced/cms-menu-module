@@ -99,7 +99,13 @@ class MenuService
 
         $menu = new Menu();
         $menu->name = $menuEntity->getName();
-        $menu->items = $this->assembleRecursive($menuEntity->getItems());
+
+        // @todo this needs optimizing as menu items already come flattened from Menu::getItems
+        $menu->items = $this->assembleRecursive($menuEntity->getItems()->filter(
+            function(Model\MenuItem $menuItem) {
+                return null === $menuItem->getParentMenuItem();
+            }
+        ));
 
         $this->cache->setItem(static::MENU_CACHE_ID, $menu);
 
@@ -225,7 +231,13 @@ class MenuService
         $menu = $this->menuRepository->getByName('main');
 
         $flattenedMenu = [];
-        $this->flattenMenuRecursive($menu->getItems(), $flattenedMenu);
+
+        // @todo this needs optimizing as menu items already come flattened from Menu::getItems
+        $this->flattenMenuRecursive($menu->getItems()->filter(
+            function(Model\MenuItem $menuItem) {
+                return null === $menuItem->getParentMenuItem();
+            }
+        ), $flattenedMenu);
 
         $itemToMove = array_filter($flattenedMenu, function($flattenedMenuItem) use ($id) {
             return ($flattenedMenuItem->getId() == $id);
@@ -241,7 +253,12 @@ class MenuService
         if ($itemToMove->getParentMenuItem()) {
             $siblings = $itemToMove->getParentMenuItem()->getItems();
         } else {
-            $siblings = $menu->getItems();
+            // @todo look at this logic again now Menu::getItems returns whole flattened menu
+            $siblings = $menu->getItems()->filter(
+                function(Model\MenuItem $menuItem) {
+                    return null === $menuItem->getParentMenuItem();
+                }
+            );
         }
 
         // Get next and prev

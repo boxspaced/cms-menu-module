@@ -2,8 +2,6 @@
 namespace Boxspaced\CmsMenuModule;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManager\Mapper\Conditions;
-use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
 use Boxspaced\CmsSlugModule\Model\Route;
 use Boxspaced\CmsCoreModule\Model\RepositoryFactory;
@@ -97,28 +95,6 @@ return [
                     'one_to_many' => [
                         'items' => [
                             'type' => Model\MenuItem::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'parent_menu_item',
-                                            'operation' => 'isNull',
-                                        ],
-                                        [
-                                            'field' => 'menu.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                    'ordering' => [
-                                        [
-                                            'field' => 'order_by',
-                                            'direction' => Conditions::ORDER_ASC,
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                     ],
                 ],
@@ -161,24 +137,6 @@ return [
                     'one_to_many' => [
                         'items' => [
                             'type' => Model\MenuItem::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'parent_menu_item.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                    'ordering' => [
-                                        [
-                                            'field' => 'order_by',
-                                            'direction' => Conditions::ORDER_ASC,
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                     ],
                 ],

@@ -66,7 +66,12 @@ class Menu extends AbstractEntity
      */
     public function getItems()
     {
-        return $this->get('items');
+        return $this->get('items')->sort(function(
+            MenuItem $a,
+            MenuItem $b
+        ) {
+            return $a->getOrderBy() - $b->getOrderBy();
+        });
     }
 
     /**
