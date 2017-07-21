@@ -7,6 +7,7 @@ use Zend\Log\Logger;
 use Boxspaced\CmsMenuModule\Service;
 use Boxspaced\CmsAccountModule\Service\AccountService;
 use Boxspaced\CmsStandaloneModule\Service\StandaloneService;
+use Zend\EventManager\EventManagerInterface;
 
 class MenuController extends AbstractActionController
 {
@@ -63,7 +64,19 @@ class MenuController extends AbstractActionController
         $this->config = $config;
 
         $this->view = new ViewModel();
-        $this->view->setTerminal(true);
+    }
+
+    /**
+     * @param EventManagerInterface $events
+     * @return void
+     */
+    public function setEventManager(EventManagerInterface $events)
+    {
+        parent::setEventManager($events);
+        $controller = $this;
+        $events->attach('dispatch', function ($e) use ($controller) {
+            $controller->layout('layout/admin');
+        }, 100);
     }
 
     /**
