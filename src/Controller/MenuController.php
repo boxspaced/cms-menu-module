@@ -88,7 +88,7 @@ class MenuController extends AbstractActionController
 
         $adminNavigation = $this->adminNavigationWidget();
         if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
+            $this->layout()->addChild($adminNavigation, 'adminNavigation');
         }
 
         $menuItems = [];
@@ -184,6 +184,7 @@ class MenuController extends AbstractActionController
      */
     public function internalLinksAction()
     {
+        $this->view->setTerminal(true);
         $this->view->standaloneItems = $this->standaloneService->getPublishedStandalone();
         return $this->view;
     }
