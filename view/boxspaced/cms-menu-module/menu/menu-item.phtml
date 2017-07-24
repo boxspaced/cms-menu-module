@@ -4,7 +4,7 @@ $green = 255-(($this->level-1)*12);
 ?>
 
 <tr id="<?php echo $this->escapeHtmlAttr($this->name) ?>" style="background-color: rgb(<?php echo $red ?>,<?php echo $green ?>,255);">
-<td width="100%" style="padding-left: <?php echo ($this->level-1)*35 ?>px;">
+<td width="100%" style="padding-left: <?php echo $this->level*35 ?>px;">
 
 <div class="item-icon">
 <img src="<?php echo $this->escapeHtmlAttr($this->typeIcon) ?>" alt="" title="<?php echo $this->escapeHtmlAttr($this->typeName) ?><?php if ($this->moduleName !== 'item') : ?> <?php echo $this->escapeHtmlAttr($this->moduleName) ?><?php endif; ?>" />
@@ -23,7 +23,7 @@ Type: <em><?php echo $this->escapeHtml($this->typeName) ?><?php if ($this->modul
 <?php if ($this->allowCreate && $this->level < $this->maxMenuLevels) : ?>
 
 <td style="white-space: nowrap;">
-<a class="btn btn-success" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => $this->menuItemId]]); ?>">Create new beneath</a>
+<a class="btn btn-default" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => $this->menuItemId]]); ?>">Create new beneath</a>
 </td>
 
 <?php elseif ($this->allowCreate) : ?>
