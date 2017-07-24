@@ -2,30 +2,27 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1>Index of: menu items</h1>
+                <h1>Menu</h1>
 
-                <?php if ($this->allowCreateItem) : ?>
-                <div class="actions">
-                    <img src="/images/icons/add.png" alt="Add icon" />
-                    <a class="link-button" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => 0]]); ?>">Create new at top level</a>
-                </div>
-                <?php endif; ?>
+                <div class="panel panel-default">
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th colspan="10">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if ($this->menuItems) : ?>
-                        <?php echo $this->partialLoop('boxspaced/cms-menu-module/menu/menu-item.phtml', $this->menuItems) ?>
-                        <?php else : ?>
-                        <tr class="odd"><td width="100%">Empty result set</td><td colspan="10">&nbsp;</td></tr>
+                    <div class="panel-heading clearfix">
+                        <?php if ($this->allowCreateItem) : ?>
+                        <a class="btn btn-success pull-left" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => 0]]); ?>">Create new at top level</a>
                         <?php endif; ?>
-                    </tbody>
-                </table>
+                    </div>
+
+                    <table class="table">
+                        <tbody>
+                            <?php if ($this->menuItems) : ?>
+                            <?php echo $this->partialLoop('boxspaced/cms-menu-module/menu/menu-item.phtml', $this->menuItems) ?>
+                            <?php else : ?>
+                            <tr class="odd"><td width="100%">Empty result set</td><td colspan="10">&nbsp;</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+
+                </div>
 
             </div>
         </div>

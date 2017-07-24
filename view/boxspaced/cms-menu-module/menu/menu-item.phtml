@@ -23,8 +23,7 @@ Type: <em><?php echo $this->escapeHtml($this->typeName) ?><?php if ($this->modul
 <?php if ($this->allowCreate && $this->level < $this->maxMenuLevels) : ?>
 
 <td style="white-space: nowrap;">
-<img src="/images/icons/add_beneath.png" alt="Add beneath icon" />
-<a class="link-button" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => $this->menuItemId]]); ?>">Create new beneath</a>
+<a class="btn btn-success" href="<?php echo $this->url('item', ['action' => 'create'], ['query' => ['from' => 'menu', 'provisionalTo' => 'Menu', 'provisionalBeneathMenuItemId' => $this->menuItemId]]); ?>">Create new beneath</a>
 </td>
 
 <?php elseif ($this->allowCreate) : ?>
@@ -36,7 +35,6 @@ Type: <em><?php echo $this->escapeHtml($this->typeName) ?><?php if ($this->modul
     <span class="sprite-icon sprite-lightbulb-<?php echo $this->escapeHtmlAttr($this->lifespanState) ?>" title="<?php echo $this->escapeHtmlAttr($this->lifespanTitle) ?>">Bulb <?php echo $this->escapeHtml($this->lifespanState) ?> icon</span>
 </td>
 <?php else : ?>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 <?php endif; ?>
 
