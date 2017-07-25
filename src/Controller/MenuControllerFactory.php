@@ -23,7 +23,7 @@ class MenuControllerFactory extends AbstractControllerFactory implements Factory
             $container->get('config')
         );
 
-        $this->adminNavigationWidget($controller);
+        $this->adminNavigationWidget($controller, $container);
 
         return $this->forceHttps($controller, $container);
     }
