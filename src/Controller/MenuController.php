@@ -86,11 +86,6 @@ class MenuController extends AbstractActionController
     {
         $menu = $this->menuService->getMenu();
 
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->layout()->addChild($adminNavigation, 'adminNavigation');
-        }
-
         $menuItems = [];
         $items = [];
 
