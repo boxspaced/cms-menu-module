@@ -8,22 +8,19 @@ use Boxspaced\CmsStandaloneModule\Service\StandaloneService;
 use Boxspaced\CmsMenuModule\Service\MenuService;
 use Boxspaced\CmsAccountModule\Service\AccountService;
 use Zend\Log\Logger;
-use Boxspaced\CmsCoreModule\Controller\AbstractControllerFactory;
 
-class MenuControllerFactory extends AbstractControllerFactory implements FactoryInterface
+class MenuControllerFactory implements FactoryInterface
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $controller = new MenuController(
+        return new MenuController(
             $container->get(StandaloneService::class),
             $container->get(MenuService::class),
             $container->get(AccountService::class),
             $container->get(Logger::class),
             $container->get('config')
         );
-
-        return $this->forceHttps($controller, $container);
     }
 
 }
