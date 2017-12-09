@@ -56,7 +56,7 @@ class MenuItem extends AbstractEntity
      * @param MenuItem $parentMenuItem
      * @return MenuItem
      */
-    public function setParentMenuItem(MenuItem $parentMenuItem)
+    public function setParentMenuItem(MenuItem $parentMenuItem = null)
     {
         $this->set('parent_menu_item', $parentMenuItem);
 		return $this;
