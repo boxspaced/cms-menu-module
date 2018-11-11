@@ -66,6 +66,7 @@ abstract class AbstractNavigationFactory extends ZendAbstractNavigationFactory
                 $page = [
                     'label' => $item->navText,
                     'uri' => $item->slug,
+                    'class' => 'external-menu-item',
                 ];
 
             } elseif ($item->module || $this->isLive($item->liveFrom, $item->expiresEnd)) {
