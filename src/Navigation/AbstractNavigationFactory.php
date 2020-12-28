@@ -55,6 +55,12 @@ abstract class AbstractNavigationFactory extends ZendAbstractNavigationFactory
             'course-details',
             'whats-on-results',
             'whats-on-details',
+	    'about-us-stock-suggestion',
+            'about-us-it-contact',
+	    'about-us',
+	    'idea-online',
+	    'whats-on',
+	    'e-library',
         );
 
         foreach ($items as $item) {
