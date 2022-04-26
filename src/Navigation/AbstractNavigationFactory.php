@@ -47,7 +47,6 @@ abstract class AbstractNavigationFactory extends ZendAbstractNavigationFactory
         $hide = array(
             'learning',
             'local-history',
-            'idea-stores',
             'digital-gallery-results',
             'digital-gallery-image',
             'digital-gallery-basket',
